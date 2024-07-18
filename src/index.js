@@ -1,17 +1,89 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  useRouteError,
+} from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+
+import './Static/Css/App.css'
+import './Static/Css/main..css'
+import Home from "./Components/Home";
+import Contact from "./Components/Contact";
+import Index from "./Components/Index";
+import Portfolio from "./Components/Portfolio";
+import About from "./Components/About";
+
+function App() {
+  const [router, setRouter] = useState(null);
+
+  useEffect(() => {
+    const newRouter = createBrowserRouter([
+      {
+        path: "/",
+        element: <Index />,
+        errorElement: <ErrorBoundary />,
+        children: [
+          {
+            path: "/home",
+            element: <Home />,
+          },
+          {
+            path: "/about",
+            element: <About />,
+          },
+          {
+            path: "/portfolio",
+            element: <Portfolio />,
+          },
+          {
+            path: "/contact",
+            element: <Contact />,
+          },
+        ],
+      },
+    ]);
+
+    setRouter(newRouter);
+  }, []);
+
+  return (
+    <div id="root" style={{ minHeight: "100vh" }}>
+      {router && (
+        <React.StrictMode>
+          <RouterProvider router={router} />
+        </React.StrictMode>
+      )}
+    </div>
+  );
+}
+
+function ErrorBoundary() {
+  const error = useRouteError();
+  console.error(error);
+  return (
+    <div
+      className="d-flex align-items-center rounded p-4 flex-wrap justify-content-center"
+      style={{ minHeight: "100vh" }}
+    >
+      <img
+        src={require("./assets/imgages/404.jpg")}
+        alt="404"
+        className="rounded"
+        style={{ maxWidth: "100%" }}
+      />
+      <h2 className="text-bold text-danger text-center ms-md-3">
+        Page Not Found.
+      </h2>
+    </div>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));
+
+window.addEventListener("resize", () => {
+  document.getElementById("root").style.minHeight = window.innerHeight + "px";
+});
