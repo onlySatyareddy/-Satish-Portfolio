@@ -6,11 +6,8 @@ import {
   useRouteError,
 } from "react-router-dom";
 
-
-
-
-import './Static/Css/App.css'
-import './Static/Css/main..css'
+import "./Static/Css/App.css";
+import "./Static/Css/main..css";
 import Home from "./Components/Home";
 import Contact from "./Components/Contact";
 import Index from "./Components/Index";
@@ -50,6 +47,10 @@ function App() {
     setRouter(newRouter);
   }, []);
 
+  useEffect(() => {
+    document.title = "Satis's Poltfolio"; // Set your desired title here
+  }, []);
+
   return (
     <div id="root" style={{ minHeight: "100vh" }}>
       {router && (
@@ -87,3 +88,5 @@ ReactDOM.render(<App />, document.getElementById("root"));
 window.addEventListener("resize", () => {
   document.getElementById("root").style.minHeight = window.innerHeight + "px";
 });
+
+export default App;

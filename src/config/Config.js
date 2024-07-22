@@ -1,6 +1,6 @@
 export const config = {
     // <--------------------  Home section  ----------------------->
-    resumeLink: "https://drive.google.com/file/d/1kTuJlQOH1E4lLJq9rZNv4QT4_fz4Jg6P/view?usp=sharing",
+    resumeLink: "https://1drv.ms/b/c/5a787eb99fae35c6/EccVR3gDCxFPkUIKZ3ap5osBiPX7rWvVwDarHd-iBHTTPg?e=brbiWR",
     gitHubUrl: "https://github.com/onlySatyareddy",
     gfgUrl: "",
   
@@ -14,7 +14,7 @@ export const config = {
            "There I learnt HTML CSS javaScript React and tried to contribute to the project.",
         ],
       },
-      // {
+      // {Y
       //   name: "Goldman Sachs Intern",
       //   duration: "May 2022 - July 2022 (10 weeks)",
       //   points: [
